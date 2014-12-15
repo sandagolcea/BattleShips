@@ -1,17 +1,21 @@
+###Sam's morning lecture - week2 - day1
+
+##Code review
+*rubber ducking? - http://www.amazon.co.uk/YELLOW-ONESIE-COSTUME-TEENAGERS-HALLOWEEN/dp/B00F9HZP8G*
 
 ##Battle Ships
 
 ###Ships
 Responsibility	|  Collaborators
 ----------------|-------------------
-Be hit?     	| Player
-Be destroyed?   | Player
+Be hit?     	|   Player
+Be destroyed?   | 	Player
          		|
 
 ###Players
 Responsibility	|  Collaborators
 ----------------|-------------------
-play/shoot    	| Ships, Board
+play/shoot    	|	Ships, Board
 place ship    	| Ships, Board
          		|
 
@@ -19,8 +23,8 @@ place ship    	| Ships, Board
 ###Board
 Responsibility	|  Collaborators
 ----------------|-------------------
-has_ships	    | Ships
-hit_list    	| Player, Ships
+has_ships	    |     Ships
+hit_list    	| 	Player, (Ships?)
 
 
 Proposition:
