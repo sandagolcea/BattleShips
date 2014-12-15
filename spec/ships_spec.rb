@@ -8,4 +8,11 @@ describe Ships do
     expect(ship).not_to be_destroyed
   end
 
+  it 'can be destroyed' do
+    ship.destroy!
+    expect(ship).to be_destroyed
+  end
+
+  it ''
+
 end
