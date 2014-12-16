@@ -36,6 +36,6 @@ hit(3,3)
 hit(2,4)
 show_matrix
 
-def place_ship(start_point,length,direction)
+def place_ship()
 
 end

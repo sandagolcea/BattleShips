@@ -3,43 +3,26 @@
 ##Code review
 *rubber ducking? - http://www.amazon.co.uk/YELLOW-ONESIE-COSTUME-TEENAGERS-HALLOWEEN/dp/B00F9HZP8G*
 
-##Battle Ships
+Doing this week: Battle Ships
 
+###Steve's morning lecture - week2 - day2
+
+##SOLID principles
+#####Clint and I are O
+
+Where do you start ? : CRC
+
+Main component: Game. Board. Ships, ...*pins? Players
+
+Where do we start?
 ###Ships
-Responsibility	|  Collaborators
-----------------|-------------------
-Be hit?     	|   Player
-Be destroyed?   | 	Player
-         		|
+Ships - because it's the simplest element. start with the basic!
 
-###Players
-Responsibility	|  Collaborators
-----------------|-------------------
-play/shoot    	|	Ships, Board
-place ship    	| Ships, Board
-         		|
+Floating? / Destroyed? / Sunk? - boolean
+Size / Length - integer (Fixnum)
+Hits or Hit count - integer?
+..Can be placed?
 
-
-###Board
-Responsibility	|  Collaborators
-----------------|-------------------
-has_ships	    |     Ships
-hit_list    	| 	Player, (Ships?)
-
-
-Proposition:
-
-* `shot_list = [A1, C4]`
-* `kill_list + delete << hit_list[].select `
-* `kill_list[] -> ships[killed]`
-
-Just like piping:
-shot_list | hit_list | kill_list
-
-
-###Cell?
-Responsibility	|  Collaborators
-----------------|-------------------
-       		    |
-         		| 
-         		|
+* Single Responsibility Principle:
+  A class can only have one responsibility
+* Open/
