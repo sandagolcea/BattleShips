@@ -1,17 +1,12 @@
 class Board
-	DEFAULT_SIZE = 10
+	
+  DEFAULT_SIZE = 10
+  attr_reader :size
 
 	def initialize(options = {})
-		self.size = options.fetch(:capacity,DEFAULT_SIZE)
+    @size = options.fetch(:size,DEFAULT_SIZE)
     @ships = []
-	end
-
-	def size
-		@size ||= DEFAULT_SIZE
-	end
-		
-	def size=(value)
-		@size = value
+    create(@size)
 	end
 
   def create(size)
@@ -24,11 +19,10 @@ class Board
       end
       @matrix << row
     end
-
-    @matrix
   end
 
   def receive_shot(x,y)
+    # TODO: validate x, y are between boundaries
       @matrix[x][y] = 1
   end
 
@@ -37,17 +31,17 @@ class Board
   end
 
   def add_ship(ship)
+    # 1. validate ship coordinates are between boundaries
+    # 2. valid ship coord are not occupied by other ships
+    # 3. mark matrix coordinates
+    # 4. add it to the collection of ships
     # list of ships
     @ships << ship
     # ships on board
-    # ary = ship.coordinates
-    # ary.each do |cell| 
-    #   x = cell[0]
-    #   p x
-    #   y = cell[1]
-    #   p y
-    #   receive_shot(x,y)
-    # end
+    ary = ship.coordinates
+    ary.each do |cell| 
+      @matrix[cell[0]][cell[1]] = 3
+    end
     # put B for boat instead of 3, or whatever
   end
 
@@ -57,8 +51,7 @@ class Board
 
 	# board.placed?(self)
 	def placed?(boat_thing)
-		# this is going to check if the coordinates given are in fact
-    # all your base are belong to us. Ship, I meant ship!
+		# this is going to check if the coordinates given belong to a ship
 	end
 
 

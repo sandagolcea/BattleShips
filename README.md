@@ -23,7 +23,7 @@ Responsibility	|  Collaborators | Status
 ----------------|----------------|---------
 create_board    | -              | Done
 receive_shot    | Player, Ships  | 50% Done
-hit_list        | Player, Ships  | Untouchedlike a virgin
+hit_list        | Player, Ships  | Untouched, like a virgin
 ship_list	      | Ships          | In Progress
 
 
