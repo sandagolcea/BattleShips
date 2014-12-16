@@ -13,7 +13,7 @@ class Board
 		@size = value
 	end
 
-  def create_board(size)
+  def create(size)
     @matrix = []
 
     0.upto(size) do 
@@ -30,6 +30,13 @@ class Board
 	def has_ships #(?)
 	end
 
+  def receive_shot(x,y)
+      @matrix[x][y] = 1
+  end
+
+  def show
+    @matrix
+  end
 
 	# board.placed?(self)
 	def placed?(boat_thing)

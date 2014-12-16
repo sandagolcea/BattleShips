@@ -2,31 +2,33 @@
 ##Battle Ships
 
 ###Ships
-Responsibility	|  Collaborators
-----------------|-------------------
-Be hit?         | Player
-Be destroyed?   | - 
-length          | - 
-Coordinates     | - 
+Responsibility	|  Collaborators | Status
+----------------|----------------|--------
+Be hit?         | Player         | Pending
+Be destroyed?   | -              | Pending
+length          | -              | Done
+Coordinates     | -              | Done
 
 
 ###Players
-Responsibility	|  Collaborators
-----------------|-------------------
-play/shoot    	| Ships, Board
-place ship    	| Ships, Board
-         		    |
+Responsibility	|  Collaborators | Status
+----------------|----------------|--------
+play/shoot    	| Ships, Board   | 
+place ship    	| Ships, Board   | 
+         		    
 
 
 ###Board
-Responsibility	|  Collaborators
-----------------|-------------------
-create_board    | -
-has_ships	      | Ships
-hit_list      	| Player, Ships
+Responsibility	|  Collaborators | Status
+----------------|----------------|---------
+create_board    | -              | Done
+receive_shot    | Player, Ships  |
+ship_list	      | Ships          | ?
+hit_list      	| Player, Ships  |
+
 
 ###Game
-Responsibility  |  Collaborators
-----------------|-------------------
+Responsibility  |  Collaborators | Status
+----------------|----------------|--------
 Start Game      |
 Stop Game       |

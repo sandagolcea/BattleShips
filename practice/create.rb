@@ -19,7 +19,7 @@ end
 
 # show_matrix
 
-def attack(coord)
+def attack(coord) # B4 -> [1,3] x, y
   x = coord.split(//).first.ord - 'A'.ord
   y = coord.split(//).last.to_i - 1 if y != 0 
   # p x, y
