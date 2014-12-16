@@ -22,9 +22,10 @@ place ship    	| Ships, Board   |
 Responsibility	|  Collaborators | Status
 ----------------|----------------|---------
 create_board    | -              | Done
-receive_shot    | Player, Ships  |
-ship_list	      | Ships          | ?
-hit_list      	| Player, Ships  |
+receive_shot    | Player, Ships  | 50% Done
+hit_list        | Player, Ships  | Untouchedlike a virgin
+ship_list	      | Ships          | In Progress
+
 
 
 ###Game

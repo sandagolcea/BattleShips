@@ -19,8 +19,8 @@ class Ships
 	end
 
   # shouldn't these be the player's resp?
-  def ship_coordinates(*coordinates)
-    @coordinates = coordinates
+  def coordinates(*xy)
+    @coordinates = xy
     # coordinates.each { |c| @coordinates << c}
   end
   

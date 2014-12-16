@@ -3,6 +3,7 @@ class Board
 
 	def initialize(options = {})
 		self.size = options.fetch(:capacity,DEFAULT_SIZE)
+    @ships = []
 	end
 
 	def size
@@ -27,15 +28,31 @@ class Board
     @matrix
   end
 
-	def has_ships #(?)
-	end
-
   def receive_shot(x,y)
       @matrix[x][y] = 1
   end
 
   def show
     @matrix
+  end
+
+  def add_ship(ship)
+    # list of ships
+    @ships << ship
+    # ships on board
+    # ary = ship.coordinates
+    # ary.each do |cell| 
+    #   x = cell[0]
+    #   p x
+    #   y = cell[1]
+    #   p y
+    #   receive_shot(x,y)
+    # end
+    # put B for boat instead of 3, or whatever
+  end
+
+  def ships
+    @ships
   end
 
 	# board.placed?(self)
