@@ -4,10 +4,11 @@
 ###Ships
 Responsibility	|  Collaborators
 ----------------|-------------------
+Be hit?         | Player
 Be destroyed?   | - 
 length          | - 
-Be hit?     	  | Player
-         		    |
+Coordinates     | - 
+
 
 ###Players
 Responsibility	|  Collaborators

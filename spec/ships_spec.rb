@@ -19,14 +19,11 @@ describe Ships do
     expect(baby_ship.length).to eq 2
   end
 
-  it 'can be placed on the board' do
-    allow(board).to receive(:baby_ship).and_return(true)
-  end
-
+  
   # it 'is not hit by default' do
   # end
 
   # it 'can be hit' do
   # end
-  
+
 end
