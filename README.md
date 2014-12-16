@@ -23,13 +23,16 @@ Responsibility	|  Collaborators | Status
 ----------------|----------------|---------
 create_board    | -              | Done
 receive_shot    | Player, Ships  | 50% Done
-hit_list        | Player, Ships  | Untouched, like a virgin
-ship_list	      | Ships          | In Progress
+add_ship        | Ships          | Done
+ship_list       | Ships          | Done
+hit_list        | Player, Ships  | Pending
+
 
 
 
 ###Game
 Responsibility  |  Collaborators | Status
 ----------------|----------------|--------
-Start Game      |
-Stop Game       |
+Start Game      |                |
+Stop Game       |                |
+Handles Gameplay|                |

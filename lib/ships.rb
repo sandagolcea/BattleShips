@@ -20,6 +20,7 @@ class Ships
 
   # shouldn't these be the player's resp?
   def coordinates(*xy)
+    # TODO: validate ship coordinates are ok
     @coordinates = xy
     # coordinates.each { |c| @coordinates << c}
   end
