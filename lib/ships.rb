@@ -18,13 +18,14 @@ class Ships
 		@length
 	end
 
+	# shouldn't these be the player's resp?
 	def place_ship(*coordinates)
 		@coordinates = coordinates
 		# coordinates.each { |c| @coordinates << c}
 	end
 	# def place_ship(start_point,length,direction)
 	# end
-	
+
 	def ship_in_place?
 		return true if board.placed?(self)
 		false
