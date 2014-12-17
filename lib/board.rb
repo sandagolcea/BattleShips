@@ -50,7 +50,7 @@ class Board
 
     # 3. mark matrix coordinates
     ship.coordinates.each do |cell| 
-      @matrix[cell[0]][cell[1]] = BOAT
+      @matrix[cell.first][cell.last] = BOAT
     end
 
     # 4. add it to the collection of ships

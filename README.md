@@ -8,6 +8,9 @@ take_hit        | Player, Board  | Pending
 Be destroyed?   | -              | Pending
 length          | -              | Done
 Coordinates     | -              | Done
+hit_list        | -              | Pending
+
+TODO: RENAME Ships to Ship
 
 
 ###Players
@@ -22,12 +25,9 @@ place ship    	| Ships, Board   |
 Responsibility	|  Collaborators | Status
 ----------------|----------------|---------
 create_board    | -              | Done
-receive_shot    | Player, Ships  | 50% Done
+receive_shot    | Player, Ships  | Queue 1
 add_ship        | Ships          | Done
 ship_list       | Ships          | Done
-hit_list        | Player, Ships  | Pending
-
-
 
 
 ###Game
