@@ -14,10 +14,6 @@ describe Board do
     expect(board.size).not_to eq nil
   end
 
-  xit 'should initialize an empty board' do
-    expect(board.show).to eq [[WATER,WATER,WATER],[WATER,WATER,WATER],[WATER,WATER,WATER]]
-  end
-
   it 'should initialize an empty board' do
     expect(board).to be_empty
   end
@@ -51,13 +47,11 @@ describe Board do
 
   it 'should not add a ship outside the board' do
     allow(ship).to receive(:coordinates).and_return([[0,0],[1,0],[30,0]])
-    # expect(board.add_ship(ship)).to raise_error(RuntimeError, 'Coordinates are invalid')
     expect(board.add_ship(ship)).to eq false
   end
 
   it 'should not add a ship on a position that is already taken' do
     allow(ship).to receive(:coordinates).and_return([[0,0],[0,1],[0,2]])
-    # expect(board.add_ship(ship)).to raise_error(RuntimeError, 'Coordinates are invalid')
     board.add_ship(ship)
     expect(board.add_ship(ship)).to eq false
   end
@@ -67,7 +61,6 @@ describe Board do
     allow(ship).to receive(:coordinates).and_return([[0,0],[1,0],[2,0]])
     board.add_ship(ship)
     expect(board.ships.count).to eq 1
-    expect(board.show).to eq [[BOAT,WATER,WATER],[BOAT,WATER,WATER],[BOAT,WATER,WATER]]
   end
 
   it 'should not shoot over existing shot' do

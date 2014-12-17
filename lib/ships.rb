@@ -1,5 +1,7 @@
 class Ships
 
+  attr_reader :coordinates, :length
+
 	def initialize(length)
 		@length = length 
     #@initialized = false;
@@ -16,15 +18,20 @@ class Ships
 		@destroyed = true
 	end
 
-	def length
-		@length
-	end
-
   # TODO: should convert to real coordinates
-  def coordinates(*xy) 
+  def set_coordinates(start_point, direction)
     # TODO: validate ship coordinates are ok
-    @coordinates = xy
-    #@initialized = true;
+
+    @coordinates = []
+
+    0.upto(@ship_length) do |i| 
+      
+      x = start_point.split(//).first.ord - 'A'.ord
+      y = start_point.split(//).last.to_i + i
+      @coordinates << [x,y-1]
+    end
+
+    @initialized = true    
   end
 
   def take_hit(x,y)
