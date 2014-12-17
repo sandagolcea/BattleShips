@@ -29,7 +29,13 @@ class Board
   end
 
   def receive_shot(x,y)
-      @matrix[x][y] = MISS if is_valid?(x,y)
+
+    if is_valid?(x,y) && !is_shot?(x,y)
+      @matrix[x][y] == BOAT ? @matrix[x][y] = HIT : @matrix[x][y] = MISS
+    else 
+      false  
+    end
+      # @matrix[x][y] = MISS if is_valid?(x,y)
       # 1. check coordinates are valid
       # 2. return false is it was already shot 
       # 3. if it hits a ship -  
@@ -62,6 +68,10 @@ class Board
   end
 
   private
+
+  def is_shot?(x,y)
+    @matrix[x][y] != BOAT && @matrix[x][y] != WATER 
+  end
 
   def is_valid?(x,y)
     return x >= 0 && y >= 0 && x <= @size && y <= @size

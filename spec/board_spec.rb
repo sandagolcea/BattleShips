@@ -62,6 +62,9 @@ describe Board do
     expect(board.show).to eq [[BOAT,WATER,WATER],[BOAT,WATER,WATER],[BOAT,WATER,WATER]]
   end
 
-
+  it 'should not shoot over existing shot' do
+    board.receive_shot(1,2)
+    expect(board.receive_shot(1,2)).to eq false
+  end
 
 end
