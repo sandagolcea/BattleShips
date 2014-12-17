@@ -1,18 +1,12 @@
-require 'ships'
+require 'ship'
 
-describe Ships do
-  let(:ship){Ships.new(3)}
-  let(:baby_ship){Ships.new(2)}
-  let(:mother_ship){Ships.new(4)}
+describe Ship do
+  let(:ship){Ship.new(3)}
+  let(:baby_ship){Ship.new(2)}
   let(:board){double :board}
 
-  it 'should not be destroyed by default' do
-    expect(baby_ship).not_to be_destroyed
-  end
-
-  it 'can be destroyed' do
-    baby_ship.destroy!
-    expect(baby_ship).to be_destroyed
+  it 'should not be sunk by default' do
+    expect(baby_ship).not_to be_sunk
   end
 
   it 'should have a size' do 
@@ -29,10 +23,35 @@ describe Ships do
     ship.set_coordinates("A1",:horizontal)
     expect(ship.coordinates).to eq [[0,0],[0,1],[0,2]]
   end
-  # it 'is not hit by default' do
-  # end
+  
+  # TODO: refactor
+  it 'a new ship is not hit when added' do
+    ship.set_coordinates("A1",:horizontal)
+    expect(ship.coordinates.length).to eq ship.length
+  end
 
-  # it 'can be hit' do
-  # end
+  it 'can be hit' do
+    ship.set_coordinates("B1",:horizontal)
+    expect(ship.take_hit(1,0)).to eq true
+  end
 
+  it 'cannot be hit if you shoot outside the boat' do
+    ship.set_coordinates("B1",:horizontal)
+    expect(ship.take_hit(2,2)).to eq false
+  end
+
+  it 'can kill/sink a ship' do
+    ship.set_coordinates("A1", :vertical)
+    ship.take_hit(0,0)
+    ship.take_hit(1,0)
+    ship.take_hit(2,0)
+    expect(ship).to be_sunk
+  end
+
+  it 'can be hit but not yet sunk' do
+    ship.set_coordinates("A1", :vertical)
+    ship.take_hit(2,0)
+    expect(ship).not_to be_sunk
+  end
+  
 end
