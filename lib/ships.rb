@@ -18,16 +18,15 @@ class Ships
 		@destroyed = true
 	end
 
-  # TODO: should convert to real coordinates
   def set_coordinates(start_point, direction)
-    # TODO: validate ship coordinates are ok
 
     @coordinates = []
 
-    0.upto(@ship_length) do |i| 
-      
+    0.upto(@length-1) do |i| 
+
       x = start_point.split(//).first.ord - 'A'.ord
-      y = start_point.split(//).last.to_i + i
+      y = start_point.split(//).last.to_i 
+      direction == :vertical ? x += i : y += i 
       @coordinates << [x,y-1]
     end
 
