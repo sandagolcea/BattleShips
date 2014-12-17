@@ -4,11 +4,11 @@
 ###Ships
 Responsibility	|  Collaborators | Status
 ----------------|----------------|--------
-take_hit        | Player, Board  | Pending
+take_hit        | Player, Board  | Queue 2
 Be destroyed?   | -              | Pending
 length          | -              | Done
 Coordinates     | -              | Done
-hit_list        | -              | Pending
+hit_list        | -              | Queue 3
 
 TODO: RENAME Ships to Ship
 
