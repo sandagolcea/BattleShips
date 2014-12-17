@@ -14,8 +14,18 @@ describe Board do
     expect(board.size).not_to eq nil
   end
 
-  it 'should initialize an empty board' do
+  xit 'should initialize an empty board' do
     expect(board.show).to eq [[WATER,WATER,WATER],[WATER,WATER,WATER],[WATER,WATER,WATER]]
+  end
+
+  it 'should initialize an empty board' do
+    expect(board).to be_empty
+  end
+
+  it 'should not be empty after a ship is added' do
+    allow(ship).to receive(:coordinates).and_return([[0,0],[1,0],[2,0]])
+    board.add_ship(ship)
+    expect(board).to_not be_empty
   end
 
   it 'should be able to be shot at' do

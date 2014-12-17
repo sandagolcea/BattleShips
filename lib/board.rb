@@ -63,6 +63,10 @@ class Board
     @ships << ship
   end
 
+  def empty?
+    @matrix.all? {|column| column.all? {|cell| cell == WATER} }
+  end
+
   def ships
     @ships
   end
