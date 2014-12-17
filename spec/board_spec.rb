@@ -1,10 +1,12 @@
 require 'board'
 
 describe Board do
-  BOAT = 3
   WATER = 0
-  SHOT = 1
-
+  BOAT = 1
+  MISS = 2
+  HIT = 3
+  KILL = 4
+  
   let(:board){Board.new(:size => 2)}
   let(:ship){double :ship}
   
@@ -18,7 +20,7 @@ describe Board do
 
   it 'should be able to be shot at' do
     board.receive_shot(1,1) #B2
-    expect(board.show).to eq [[WATER,WATER,WATER],[WATER,SHOT,WATER],[WATER,WATER,WATER]]
+    expect(board.show).to eq [[WATER,WATER,WATER],[WATER,MISS,WATER],[WATER,WATER,WATER]]
   end
 
   it 'should not be able to take shots on negative coordinates' do
@@ -33,9 +35,9 @@ describe Board do
 
   it 'should accept shots on the boundaries' do
     board.receive_shot(0,0) 
-    expect(board.show).to eq [[SHOT,WATER,WATER],[WATER,WATER,WATER],[WATER,WATER,WATER]]
+    expect(board.show).to eq [[MISS,WATER,WATER],[WATER,WATER,WATER],[WATER,WATER,WATER]]
     board.receive_shot(2,2) 
-    expect(board.show).to eq [[SHOT,WATER,WATER],[WATER,WATER,WATER],[WATER,WATER,SHOT]]
+    expect(board.show).to eq [[MISS,WATER,WATER],[WATER,WATER,WATER],[WATER,WATER,MISS]]
   end
 
 

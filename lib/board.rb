@@ -2,9 +2,11 @@ class Board
 	
   DEFAULT_SIZE = 10
   # TODO: share constants with rspec
-  BOAT = 3
   WATER = 0
-  SHOT = 1
+  BOAT = 1
+  MISS = 2
+  HIT = 3
+  KILL = 4
 
   attr_reader :size
 
@@ -27,9 +29,13 @@ class Board
   end
 
   def receive_shot(x,y)
-    # TODO: validate x, y are between boundaries
-      @matrix[x][y] = SHOT if is_valid?(x,y)
-
+      @matrix[x][y] = MISS if is_valid?(x,y)
+      # 1. check coordinates are valid
+      # 2. return false is it was already shot 
+      # 3. if it hits a ship -  
+      # 3.1. check if the ship destroyed => paint it in the board KILL
+      # 3.2. if not yet destroyed, mark as HIT
+      # 4. otherwise is MISS
   end
 
   def show
@@ -55,11 +61,6 @@ class Board
     @ships
   end
 
-	# board.placed?(self)
-	def placed?(boat_thing)
-		# this is going to check if the coordinates given belong to a ship
-	end
-
   private
 
   def is_valid?(x,y)
@@ -71,5 +72,3 @@ class Board
   end
 
 end
-
-# board = Board.new

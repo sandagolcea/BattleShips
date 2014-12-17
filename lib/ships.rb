@@ -18,12 +18,18 @@ class Ships
 		@length
 	end
 
-  # shouldn't these be the player's resp?
-  def coordinates(*xy)
+  # TODO: should convert to real coordinates
+  def coordinates(*xy) 
     # TODO: validate ship coordinates are ok
     @coordinates = xy
-    # coordinates.each { |c| @coordinates << c}
+  end
+
+  def take_hit(x,y)
+    
+  end
+
+  def hit?(x,y)
+    @coordinates.include?([x,y])
   end
   
-
 end

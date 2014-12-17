@@ -4,7 +4,7 @@
 ###Ships
 Responsibility	|  Collaborators | Status
 ----------------|----------------|--------
-Be hit?         | Player         | Pending
+take_hit        | Player, Board  | Pending
 Be destroyed?   | -              | Pending
 length          | -              | Done
 Coordinates     | -              | Done
