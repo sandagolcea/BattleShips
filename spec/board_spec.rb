@@ -22,22 +22,22 @@ describe Board do
   end
 
   it 'should be able to be shot at' do
-    board.receive_shot(1,1) #B2
+    board.handle_shot(1,1) #B2
     expect(board).not_to be_empty
   end
 
   it 'should not be able to take shots on negative coordinates' do
-    board.receive_shot(1,-1) 
+    board.handle_shot(1,-1) 
     expect(board).to be_empty
   end
 
   it 'should not be able to take shots outside the boundaries' do
-    board.receive_shot(1,40) 
+    board.handle_shot(1,40) 
     expect(board).to be_empty
   end
 
   it 'should accept shots on the boundaries' do
-    board.receive_shot(0,0) 
+    board.handle_shot(0,0) 
     expect(board).not_to be_empty
   end
 
@@ -62,8 +62,8 @@ describe Board do
   end
 
   it 'should not shoot over existing shot' do
-    board.receive_shot(1,2)
-    expect(board.receive_shot(1,2)).to eq false
+    board.handle_shot(1,2)
+    expect(board.handle_shot(1,2)).to eq false
   end
 
   it 'should make sure the ship is damaged' do

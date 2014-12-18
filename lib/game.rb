@@ -7,30 +7,29 @@ class Game
   end
 
   def ask_for_ship_positions
-    puts "#{current_player.name}"
-    # for each ship, it asks the user for coords
-    # tries to place it on the board, if it didn't place it
-    # ask again for coordinates, until all the boats are placed
+    puts "#{@current_player.name}"
     
     @current_player.ships.each do |ship|
-      puts "Place ship:"
-      user_input = gets.chomp # B3  
-      puts "Direction:"
-      direction = gets.chomp  
       
-      ship.set_coordinates(user_input,direction)
+      placed_ship = false
+      while (!placed_ship) do
+      
+        print "Give ship start point: " ; user_input = gets.chomp # B3  
+        print "Direction: " ; direction = gets.chomp  
+        
+        ship.set_coordinates(user_input,direction)
+        p placed_ship = @current_player.defense_board.add_ship(ship)
+      end
 
-      # TODO: handle the case where the ship location is not valid
-      # while not add ship, keep on asking.
-      @current_player.defense_board.add_ship(ship) 
     end
     # swap players
   end
 
   def play
+    ask_for_ship_positions
     # ask for ship positions for both users (2x)
     # unless game_over(to implement func GO on the board=aka ask board if GO)
-    # if !GO ask users for hit location (receive_shot in board)
+    # if !GO ask users for hit location (handle_shot in board)
     # otherwise print winner
     # NEXT: implement an attack board; show the boards.
     # file with main method, that calls game, passes player 1 & player 2 

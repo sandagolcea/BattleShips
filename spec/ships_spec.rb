@@ -64,7 +64,7 @@ describe Ship do
   end
 
   it 'can create a destroyer' do
-    expect(Ship.destroyer.length).to eq 5
+    expect(Ship.destroyer.length).to eq 2
   end
   
 end

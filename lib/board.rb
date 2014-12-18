@@ -1,7 +1,12 @@
 class Board
 	
   DEFAULT_SIZE = 10
-  require 'constants'
+  # require 'constants'
+  WATER = 0
+  BOAT = 1
+  MISS = 2
+  HIT = 3
+  KILL = 4
 
   attr_reader :size
 
@@ -23,8 +28,7 @@ class Board
     end
   end
 
-  # TODO: rename to take_shot or handle_shot
-  def receive_shot(x,y)
+  def handle_shot(x,y)
 
     if is_valid?(x,y) && !is_shot?(x,y)
       hit = ships.any? {|ship| ship.take_hit(x,y)}

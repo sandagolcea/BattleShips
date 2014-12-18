@@ -22,7 +22,7 @@ play          	| Ships, Board   |
 Responsibility	|  Collaborators | Status
 ----------------|----------------|---------
 create_board    | -              | Done
-receive_shot    | Player, Ships  | Done
+Handle Shot    | Player, Ships  | Done
 add_ship        | Ships          | Done
 ship_list       | Ships          | Done
 

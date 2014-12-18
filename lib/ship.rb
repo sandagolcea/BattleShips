@@ -1,7 +1,7 @@
 class Ship
 
   attr_reader :coordinates, :length
-  SHIPS = {submarine: 3, battleship: 4, destroyer: 5}
+  SHIPS = {submarine: 3, battleship: 4, destroyer: 2}
 
 	def initialize(length)
 		@length = length 

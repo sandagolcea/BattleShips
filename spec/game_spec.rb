@@ -1,13 +1,15 @@
 require 'game'
-
+  
 describe Game do
+  let(:player1){double :player}
+  let(:player2){double :player}
 
   it 'can initialize a new game with two players' do
 
   end
 
   it 'should allow a player to place ships on his board' do
-
+    
   end
 
 
