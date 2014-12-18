@@ -68,4 +68,7 @@ describe Board do
     expect(board.receive_shot(1,2)).to eq false
   end
 
+  it 'should make sure the ship is damaged' do
+  end
+
 end

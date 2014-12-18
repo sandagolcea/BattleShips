@@ -1,12 +1,18 @@
 class Ship
 
   attr_reader :coordinates, :length
+  SHIPS = {submarine: 3, battleship: 4, destroyer: 5}
 
 	def initialize(length)
 		@length = length 
     @initialized = false
 		@coordinates = []
 	end
+
+  def self.method_missing name, *args
+    return new SHIPS[name] if SHIPS[name]
+    super
+  end
 
 	def sunk?
 		@initialized && @coordinates.empty?

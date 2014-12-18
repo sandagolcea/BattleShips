@@ -53,5 +53,18 @@ describe Ship do
     ship.take_hit(2,0)
     expect(ship).not_to be_sunk
   end
+
+
+  it 'can create a battle ship' do
+    expect(Ship.battleship.length).to eq 4
+  end
+
+  it 'can create a submarine' do
+    expect(Ship.submarine.length).to eq 3
+  end
+
+  it 'can create a destroyer' do
+    expect(Ship.destroyer.length).to eq 5
+  end
   
 end

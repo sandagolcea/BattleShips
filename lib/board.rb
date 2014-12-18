@@ -28,20 +28,15 @@ class Board
     end
   end
 
+  # TODO: rename to take_shot or handle_shot
   def receive_shot(x,y)
 
     if is_valid?(x,y) && !is_shot?(x,y)
-      @matrix[x][y] == BOAT ? @matrix[x][y] = HIT : @matrix[x][y] = MISS
+      hit = ships.any? {|ship| ship.take_hit(x,y)}
+      hit ? @matrix[x][y] = HIT : @matrix[x][y] = MISS
     else 
       false  
     end
-      # @matrix[x][y] = MISS if is_valid?(x,y)
-      # 1. check coordinates are valid
-      # 2. return false is it was already shot 
-      # 3. if it hits a ship -  
-      # 3.1. check if the ship destroyed => paint it in the board KILL
-      # 3.2. if not yet destroyed, mark as HIT
-      # 4. otherwise is MISS
   end
 
   def show
@@ -69,6 +64,11 @@ class Board
 
   def ships
     @ships
+  end
+
+  # TODO: test any_floating_ships.. please
+  def any_floating_ships_left?
+    @ships.any? {|ship| !ship.sunk }
   end
 
   private

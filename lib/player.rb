@@ -1,13 +1,11 @@
 class Player
 
-  def initialize(name)
+  attr_reader :name
+
+  def initialize(name, defense_board, ships)
     @name = name
-    @ships = []
-  end
-
-
-  def place_ship
-    # A2, :horizontal    
+    @defense_board = defense_board
+    @ships = ships
   end
 
 end
