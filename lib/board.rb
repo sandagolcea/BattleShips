@@ -46,7 +46,8 @@ class Board
 
     # 1. validate ship coordinates are between boundaries
     # 2. valid ship coord are not occupied by other ships
-    ship.coordinates.each {|c| return false if !is_valid?(c.first,c.last) || is_taken?(c.first,c.last)}
+    ship.coordinates.each {|c| return false if !is_valid?(c.first,c.last)}
+    ship.coordinates.each {|c| return false if is_taken?(c.first,c.last)}
 
     # 3. mark matrix coordinates
     ship.coordinates.each do |cell| 
@@ -76,7 +77,7 @@ class Board
   end
 
   def is_valid?(x,y)
-    return x >= 0 && y >= 0 && x <= @size && y <= @size
+    return x >= 0 && y >= 0 && x < @size && y < @size
   end
 
   def is_taken?(x,y)

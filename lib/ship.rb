@@ -32,10 +32,10 @@ class Ship
       end
       @direction == "vertical" ? x += i : y += i 
       @coordinates << [x,y-1]
-      puts "I gave it: #{@direction}. Is it vertical? #{@direction == "vertical"}. Coordinates:"
-      p @coordinates
+      
     end    
-
+    
+    p @coordinates
     @initialized = true    
   end
 
