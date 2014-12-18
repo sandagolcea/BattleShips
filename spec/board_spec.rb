@@ -1,14 +1,11 @@
 require 'board'
+  
 
 describe Board do
-  WATER = 0
-  BOAT = 1
-  MISS = 2
-  HIT = 3
-  KILL = 4
   
   let(:board){Board.new(:size => 2)}
-  let(:ship){double :ship}
+  let(:ship){double :ship, :sunk => false}
+  let(:titanic){double :ship, :sunk => true}
   
   it 'should have a size' do
     expect(board.size).not_to eq nil
@@ -50,6 +47,7 @@ describe Board do
     expect(board.add_ship(ship)).to eq false
   end
 
+  # TODO: remake this test to add 2 ships on top of another
   it 'should not add a ship on a position that is already taken' do
     allow(ship).to receive(:coordinates).and_return([[0,0],[0,1],[0,2]])
     board.add_ship(ship)
@@ -69,6 +67,18 @@ describe Board do
   end
 
   it 'should make sure the ship is damaged' do
+  end
+
+  it 'should have floating ship left' do
+    allow(ship).to receive(:coordinates).and_return([[0,0],[0,1],[0,2]])
+    board.add_ship(ship)
+    expect(board.any_floating_ships_left?).to eq true
+  end
+
+  it 'should not have floating ship left once they are all sunk' do
+    allow(titanic).to receive(:coordinates).and_return([[0,0],[0,1],[0,2]])
+    board.add_ship(titanic)
+    expect(board.any_floating_ships_left?).to eq false
   end
 
 end

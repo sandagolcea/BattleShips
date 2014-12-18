@@ -40,9 +40,9 @@ class Game
 
   private
 
-  # TODO: please test this
+  # TODO: please test GameOver from game.rb
   def game_over
-    !player1.defense_board.any_floating_ships_left? || !player1.defense_board.any_floating_ships_left?
+    !player1.defense_board.any_floating_ships_left? || !player2.defense_board.any_floating_ships_left?
   end
 
   def swap_players

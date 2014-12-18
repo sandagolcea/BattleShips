@@ -1,12 +1,7 @@
 class Board
 	
   DEFAULT_SIZE = 10
-  # TODO: share constants with rspec
-  WATER = 0
-  BOAT = 1
-  MISS = 2
-  HIT = 3
-  KILL = 4
+  require 'constants'
 
   attr_reader :size
 
@@ -66,7 +61,6 @@ class Board
     @ships
   end
 
-  # TODO: test any_floating_ships.. please
   def any_floating_ships_left?
     @ships.any? {|ship| !ship.sunk }
   end
