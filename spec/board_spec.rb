@@ -3,7 +3,7 @@ require 'board'
 
 describe Board do
   
-  let(:board){Board.new(:size => 2)}
+  let(:board){Board.new(:size => 4)}
   let(:ship){double :ship, :sunk => false}
   let(:titanic){double :ship, :sunk => true}
   

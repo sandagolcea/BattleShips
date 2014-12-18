@@ -29,7 +29,7 @@ class Board
   end
 
   def handle_shot(x,y)
-
+    puts "Coordinates received at board.handle_shot: #{x}#{y}"
     if is_valid?(x,y) && !is_shot?(x,y)
       hit = ships.any? {|ship| ship.take_hit(x,y)}
       hit ? @matrix[x][y] = HIT : @matrix[x][y] = MISS

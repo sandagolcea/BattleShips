@@ -14,34 +14,34 @@ describe Ship do
   end
 
   it 'should create a vertical boat' do
-    ship.set_coordinates("A1",:vertical)
+    ship.set_coordinates("A1","vertical")
     expect(ship.coordinates).to eq [[0,0],[1,0],[2,0]]
   end
 
 
   it 'should create a horizontal boat' do
-    ship.set_coordinates("A1",:horizontal)
+    ship.set_coordinates("A1","horizontal")
     expect(ship.coordinates).to eq [[0,0],[0,1],[0,2]]
   end
   
   # TODO: refactor
   it 'a new ship is not hit when added' do
-    ship.set_coordinates("A1",:horizontal)
+    ship.set_coordinates("A1","horizontal")
     expect(ship.coordinates.length).to eq ship.length
   end
 
   it 'can be hit' do
-    ship.set_coordinates("B1",:horizontal)
+    ship.set_coordinates("B1","horizontal")
     expect(ship.take_hit(1,0)).to eq true
   end
 
   it 'cannot be hit if you shoot outside the boat' do
-    ship.set_coordinates("B1",:horizontal)
+    ship.set_coordinates("B1","horizontal")
     expect(ship.take_hit(2,2)).to eq false
   end
 
   it 'can kill/sink a ship' do
-    ship.set_coordinates("A1", :vertical)
+    ship.set_coordinates("A1", "vertical")
     ship.take_hit(0,0)
     ship.take_hit(1,0)
     ship.take_hit(2,0)
@@ -49,7 +49,7 @@ describe Ship do
   end
 
   it 'can be hit but not yet sunk' do
-    ship.set_coordinates("A1", :vertical)
+    ship.set_coordinates("A1", "vertical")
     ship.take_hit(2,0)
     expect(ship).not_to be_sunk
   end

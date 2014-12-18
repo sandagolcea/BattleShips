@@ -1,7 +1,7 @@
 class Ship
 
   attr_reader :coordinates, :length
-  SHIPS = {submarine: 3, battleship: 4, destroyer: 2}
+  SHIPS = {battleship: 4, submarine: 3, destroyer: 2}
 
 	def initialize(length)
 		@length = length 
@@ -19,16 +19,22 @@ class Ship
 	end
 
   def set_coordinates(start_point, direction)
-
+    @direction = direction
     @coordinates = []
 
     0.upto(@length-1) do |i| 
 
       x = start_point.split(//).first.ord - 'A'.ord
-      y = start_point.split(//).last.to_i 
-      direction == :vertical ? x += i : y += i 
+      if start_point.size == 2
+        y = start_point.split(//).last.to_i 
+      else # start_point.size >= 3 
+        y = start_point.split(//).last(start_point.size-1).join.to_i
+      end
+      @direction == "vertical" ? x += i : y += i 
       @coordinates << [x,y-1]
-    end
+      puts "I gave it: #{@direction}. Is it vertical? #{@direction == "vertical"}. Coordinates:"
+      p @coordinates
+    end    
 
     @initialized = true    
   end
