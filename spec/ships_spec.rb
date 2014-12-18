@@ -66,5 +66,11 @@ describe Ship do
   it 'can create a destroyer' do
     expect(Ship.destroyer.length).to eq 2
   end
+
+  it 'the hit list is not empty if the ship has been hit' do
+    ship.set_coordinates("A1", "vertical")
+    ship.take_hit(0,0)
+    expect(ship.hit_list.size).to eq 1
+  end
   
 end

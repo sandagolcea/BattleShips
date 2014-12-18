@@ -3,13 +3,14 @@ require_relative 'translate_coordinates'
 class Ship
 
   include TranslateCoordinates
-  attr_reader :coordinates, :length
+  attr_reader :coordinates, :length, :hit_list
   SHIPS = {battleship: 4, submarine: 3, destroyer: 2}
 
 	def initialize(length)
 		@length = length 
     @initialized = false
 		@coordinates = []
+    @hit_list = []
 	end
 
   def self.method_missing name, *args
@@ -39,8 +40,10 @@ class Ship
   end
 
   def take_hit(x,y)
-    if @coordinates.include?([x,y])
-      @coordinates.delete([x,y])
+    coord = [x,y]
+    if @coordinates.include?(coord)
+      @hit_list << coord
+      @coordinates.delete(coord)
       return true # boat hit
     end
     false

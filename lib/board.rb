@@ -22,15 +22,7 @@ class Board
 	end
 
   def create(size)
-    @matrix = []
-
-    0.upto(size) do 
-      row = []
-      0.upto(size) do
-        row << WATER
-      end
-      @matrix << row
-    end
+    @matrix = Array.new(size) { Array.new(size) { WATER } }
   end
 
   def handle_shot(coord)
@@ -39,8 +31,19 @@ class Board
     y = coordinates.last
 
     if is_valid?(x,y) && !is_shot?(x,y)
-      hit = ships.any? {|ship| ship.take_hit(x,y)}
-      hit ? @matrix[x][y] = HIT : @matrix[x][y] = MISS
+      hit_ship = ships.select.first {|ship| ship.take_hit(x,y)}
+      # hit_ship != nil ? @matrix[x][y] = HIT : @matrix[x][y] = MISS
+      
+      if hit_ship != nil 
+        if hit_ship.sunk?
+          hit_ship.hit_list.each {|x,y| matrix[x][y] = KILL} 
+        else
+          @matrix[x][y] = HIT
+        end
+      else
+        @matrix[x][y] = MISS
+      end
+
     else 
       false  
     end
@@ -53,8 +56,9 @@ class Board
   def add_ship(ship)
 
     # 1. validate ship coordinates are between boundaries
-    # 2. valid ship coord are not occupied by other ships
     ship.coordinates.each {|c| return false if !is_valid?(c.first,c.last)}
+    
+    # 2. valid ship coord are not occupied by other ships
     ship.coordinates.each {|c| return false if is_taken?(c.first,c.last)}
 
     # 3. mark matrix coordinates

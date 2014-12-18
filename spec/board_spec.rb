@@ -76,10 +76,16 @@ describe Board do
     expect(board.any_floating_ships_left?).to eq true
   end
 
-  it 'should not have floating ship left once they are all sunk' do
+  it 'should not have floating ships left once they are all sunk' do
     allow(titanic).to receive(:coordinates).and_return([[0,0],[0,1],[0,2]])
     board.add_ship(titanic)
     expect(board.any_floating_ships_left?).to eq false
+  end
+
+  xit 'should mark all cells with KILL(4) if a ship sunk' do
+    # allow(titanic).to receive(:coordinates).and_return([[0,0],[0,1],[0,2]])
+    # board.add_ship(titanic)
+    # expect
   end
 
 end
