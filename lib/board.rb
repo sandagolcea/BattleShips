@@ -1,5 +1,10 @@
+require_relative 'translate_coordinates'
+# require './lib/translate_coordinates.rb'
+
 class Board
 	
+  include TranslateCoordinates
+
   DEFAULT_SIZE = 10
   # require 'constants'
   WATER = 0
@@ -28,8 +33,11 @@ class Board
     end
   end
 
-  def handle_shot(x,y)
-    puts "Coordinates received at board.handle_shot: #{x}#{y}"
+  def handle_shot(coord)
+    coordinates = translate_coordinates(coord)
+    x = coordinates.first
+    y = coordinates.last
+
     if is_valid?(x,y) && !is_shot?(x,y)
       hit = ships.any? {|ship| ship.take_hit(x,y)}
       hit ? @matrix[x][y] = HIT : @matrix[x][y] = MISS
@@ -67,7 +75,7 @@ class Board
   end
 
   def any_floating_ships_left?
-    @ships.any? {|ship| !ship.sunk }
+    @ships.any? {|ship| !ship.sunk? }
   end
 
   private

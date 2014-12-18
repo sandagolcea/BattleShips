@@ -1,5 +1,8 @@
+require_relative 'translate_coordinates'
+
 class Ship
 
+  include TranslateCoordinates
   attr_reader :coordinates, :length
   SHIPS = {battleship: 4, submarine: 3, destroyer: 2}
 
@@ -24,18 +27,14 @@ class Ship
 
     0.upto(@length-1) do |i| 
 
-      x = start_point.split(//).first.ord - 'A'.ord
-      if start_point.size == 2
-        y = start_point.split(//).last.to_i 
-      else # start_point.size >= 3 
-        y = start_point.split(//).last(start_point.size-1).join.to_i
-      end
+      coord = translate_coordinates(start_point)
+      x = coord.first
+      y = coord.last
       @direction == "vertical" ? x += i : y += i 
-      @coordinates << [x,y-1]
+      @coordinates << [x,y]
       
     end    
     
-    p @coordinates
     @initialized = true    
   end
 

@@ -4,8 +4,8 @@ require 'board'
 describe Board do
   
   let(:board){Board.new(:size => 4)}
-  let(:ship){double :ship, :sunk => false}
-  let(:titanic){double :ship, :sunk => true}
+  let(:ship){double :ship, :sunk? => false}
+  let(:titanic){double :ship, :sunk? => true}
   
   it 'should have a size' do
     expect(board.size).not_to eq nil
@@ -22,25 +22,30 @@ describe Board do
   end
 
   it 'should be able to be shot at' do
-    board.handle_shot(1,1) #B2
+    board.handle_shot("B2") #B2
     expect(board).not_to be_empty
   end
 
   it 'should not be able to take shots on negative coordinates' do
-    board.handle_shot(1,-1) 
+    board.handle_shot("B-1") 
     expect(board).to be_empty
   end
 
   it 'should not be able to take shots outside the boundaries' do
-    board.handle_shot(1,40) 
+    board.handle_shot("C40") 
     expect(board).to be_empty
   end
 
   it 'should accept shots on the boundaries' do
-    board.handle_shot(0,0) 
+    board.handle_shot("A1") 
     expect(board).not_to be_empty
   end
 
+
+  it 'should not shoot over existing shot' do
+    board.handle_shot("A2")
+    expect(board.handle_shot("A2")).to eq false
+  end
 
   it 'should not add a ship outside the board' do
     allow(ship).to receive(:coordinates).and_return([[0,0],[1,0],[30,0]])
@@ -61,10 +66,6 @@ describe Board do
     expect(board.ships.count).to eq 1
   end
 
-  it 'should not shoot over existing shot' do
-    board.handle_shot(1,2)
-    expect(board.handle_shot(1,2)).to eq false
-  end
 
   it 'should make sure the ship is damaged' do
   end
