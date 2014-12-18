@@ -1,12 +1,11 @@
 require_relative 'translate_coordinates'
-# require './lib/translate_coordinates.rb'
 
 class Board
 	
   include TranslateCoordinates
 
   DEFAULT_SIZE = 10
-  # require 'constants'
+
   WATER = 0
   BOAT = 1
   MISS = 2
@@ -32,7 +31,6 @@ class Board
 
     if is_valid?(x,y) && !is_shot?(x,y)
       hit_ship = ships.select.first {|ship| ship.take_hit(x,y)}
-      # hit_ship != nil ? @matrix[x][y] = HIT : @matrix[x][y] = MISS
       
       if hit_ship != nil 
         if hit_ship.sunk?
@@ -49,25 +47,24 @@ class Board
     end
   end
 
-  def show
-    @matrix
-  end
-
   def add_ship(ship)
 
-    # 1. validate ship coordinates are between boundaries
     ship.coordinates.each {|c| return false if !is_valid?(c.first,c.last)}
-    
-    # 2. valid ship coord are not occupied by other ships
     ship.coordinates.each {|c| return false if is_taken?(c.first,c.last)}
 
-    # 3. mark matrix coordinates
     ship.coordinates.each do |cell| 
       @matrix[cell.first][cell.last] = BOAT
     end
 
-    # 4. add it to the collection of ships
     @ships << ship
+  end
+
+  def grid
+    @matrix
+  end
+
+  def target_grid
+    @matrix.map {|col| col.map {|cell| cell == BOAT ? WATER : cell  } }
   end
 
   def empty?

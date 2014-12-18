@@ -34,11 +34,10 @@ Start Game      |                |
 Stop Game       |                |
 Handles Gameplay|                |
 
-<!-- mark ship as kill -->
-<!-- Print nice board ABCD..01234, centered -->
-<!-- Implement attack board -->
+
 <!-- Improve interactivity with user -->
 <!-- Print Winner -->
 <!-- give hi5 to whoever won -->
 <!-- Add unit tests, many many unit tests -->
-<!-- Refactor -->
+<!-- Refactor: replace hit_list & ..lists to hash -->
+<!-- center & color board -->

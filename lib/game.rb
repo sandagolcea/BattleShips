@@ -18,13 +18,24 @@ class Game
       swap_players
       break if game_over
     end
-    # NEXT: implement an attack board; show the boards.
-    # file with main method, that calls game, passes player 1 & player 2 
-    # & asks for names & implem diff ships + init board to 0
   end
 
 
   private
+
+  def print_nice_board(board)
+    print "    " # adding some padding
+    1.upto(board.size) { |i| print "#{i}  " }
+    puts # some more padding
+    current_letter = "A"
+    
+    board.each do |line| 
+      p "#{current_letter} #{line}" 
+      current_letter.next! 
+    end
+
+    puts # some more padding
+  end
 
   def prompt_for_ship_positions
     puts "#{@current_player.name}"
@@ -37,29 +48,31 @@ class Game
         
         ship.set_coordinates(user_input,direction)
         
-        break if (@current_player.defense_board.add_ship(ship))
+        break if (@current_player.board.add_ship(ship))
       end
 
     end
   end
 
   def prompt_for_shoot
-    puts "#{@current_player.name}"
+    puts "\e[H\e[2J" # clears the screen
+    puts "#{@current_player.name}'s board:"
+    print_nice_board(@current_player.board.grid)
 
     loop do  
-      puts "\e[H\e[2J" # clears the screen
-      puts "Where would you like to shoot? : "
+      puts "Where would you like to shoot?"
+      puts "Attack board:"
+      print_nice_board(@enemy_player.board.target_grid)
       
-      @current_player.defense_board.show.each {|line| p line}
       lucky_strike = gets.chomp
 
-      break if @enemy_player.defense_board.handle_shot(lucky_strike)
+      break if @enemy_player.board.handle_shot(lucky_strike)
     end
 
   end
 
   def game_over
-    !@player1.defense_board.any_floating_ships_left? || !@player2.defense_board.any_floating_ships_left?
+    !@player1.board.any_floating_ships_left? || !@player2.board.any_floating_ships_left?
   end
 
   def swap_players

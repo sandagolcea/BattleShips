@@ -1,9 +1,9 @@
 class Player
 
-  attr_reader :name, :defense_board, :ships
-  def initialize(name, defense_board, ships)
+  attr_reader :name, :board, :ships
+  def initialize(name, board, ships)
     @name = name
-    @defense_board = defense_board
+    @board = board
     @ships = ships
   end
 
