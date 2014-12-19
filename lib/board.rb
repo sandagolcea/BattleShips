@@ -30,11 +30,11 @@ class Board
     y = coordinates.last
 
     if is_valid?(x,y) && !is_shot?(x,y)
-      hit_ship = ships.select.first {|ship| ship.take_hit(x,y)}
+      hit_ship = ships.select {|ship| ship.take_hit(x,y)}.first
       
       if hit_ship != nil 
         if hit_ship.sunk?
-          hit_ship.hit_list.each {|x,y| matrix[x][y] = KILL} 
+          hit_ship.hit_list.each {|x,y| @matrix[x][y] = KILL} 
         else
           @matrix[x][y] = HIT
         end

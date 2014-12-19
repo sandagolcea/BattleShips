@@ -8,6 +8,7 @@ class Game
 
 
   def play
+
     prompt_for_ship_positions
     swap_players
     prompt_for_ship_positions
@@ -18,10 +19,34 @@ class Game
       swap_players
       break if game_over
     end
+    show_winner
   end
 
 
   private
+
+  def show_winner
+    clrscr
+    puts "#{@current_player.name} WON!!"
+
+    puts "Winner Board:"
+    print_nice_board(@current_player.board.grid)
+    puts "Defeated Board:"
+    print_nice_board(@enemy_player.board.grid)
+    puts "
+  ___ ___ .__       .__      ___________.__            ._._._.
+ /   |   \|__| ____ |  |__   \_   _____/|__|__  __ ____| | | |
+/    ~    \  |/ ___\|  |  \   |    __)  |  \  \/ // __ \ | | |
+\    Y    /  / /_/  >   Y  \  |     \   |  |\   /\  ___/\|\|\|
+ \___|_  /|__\___  /|___|  /  \___  /   |__| \_/  \___  >_____
+       \/   /_____/      \/       \/                  \/\/\/\/
+
+    "
+  end
+
+  def clrscr
+    puts "\e[H\e[2J" # clears the screen
+  end
 
   def print_nice_board(board)
     print "    " # adding some padding
@@ -39,9 +64,9 @@ class Game
 
   def prompt_for_ship_positions
     puts "#{@current_player.name}"
-    
-    @current_player.ships.each do |ship|
-      
+
+    @current_player.ships.each do |ship|      
+      print_nice_board(@current_player.board.grid)        
       loop do
         print "Give ship start point: " ; user_input = gets.chomp # B3  
         print "Direction: " ; direction = gets.chomp  
@@ -50,19 +75,22 @@ class Game
         
         break if (@current_player.board.add_ship(ship))
       end
-
     end
+
+    clrscr
   end
 
   def prompt_for_shoot
-    puts "\e[H\e[2J" # clears the screen
+    clrscr
     puts "#{@current_player.name}'s board:"
+    
     print_nice_board(@current_player.board.grid)
+    puts "Attack!!"
+    print_nice_board(@enemy_player.board.target_grid)
 
     loop do  
       puts "Where would you like to shoot?"
       puts "Attack board:"
-      print_nice_board(@enemy_player.board.target_grid)
       
       lucky_strike = gets.chomp
 

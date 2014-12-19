@@ -34,10 +34,13 @@ Start Game      |                |
 Stop Game       |                |
 Handles Gameplay|                |
 
-
-<!-- Improve interactivity with user -->
-<!-- Print Winner -->
+<!-- TODO:
+1. Add unit tests for hit & miss, and all the rest.
+Idea: add a meth to give you what's at x,y (cheater!)
+ -->
+<!-- Improve interactivity with user --> 
 <!-- give hi5 to whoever won -->
 <!-- Add unit tests, many many unit tests -->
 <!-- Refactor: replace hit_list & ..lists to hash -->
-<!-- center & color board -->
+<!-- HASH for coords a[x] = 1, a[y] = 2 -->
+<!-- center & color board
