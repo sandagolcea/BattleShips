@@ -25,13 +25,17 @@ class Board
   end
 
   def handle_shot(coord)
+    # 1. coordinates = translate_coordinates(coord)
+    # 2. if is_valid_and_not_already_hit?(coordinates)
+    # 3. process_hit_on(coordinates)
+
     coordinates = translate_coordinates(coord)
     x = coordinates.first
     y = coordinates.last
 
     if is_valid?(x,y) && !is_shot?(x,y)
       hit_ship = ships.select {|ship| ship.take_hit(x,y)}.first
-      
+      # TODO : refractor this into a new method 
       if hit_ship != nil 
         if hit_ship.sunk?
           hit_ship.hit_list.each {|x,y| @matrix[x][y] = KILL} 

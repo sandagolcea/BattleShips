@@ -33,7 +33,7 @@ class Game
     print_nice_board(@current_player.board.grid)
     puts "Defeated Board:"
     print_nice_board(@enemy_player.board.grid)
-    puts "
+    puts '
   ___ ___ .__       .__      ___________.__            ._._._.
  /   |   \|__| ____ |  |__   \_   _____/|__|__  __ ____| | | |
 /    ~    \  |/ ___\|  |  \   |    __)  |  \  \/ // __ \ | | |
@@ -41,7 +41,7 @@ class Game
  \___|_  /|__\___  /|___|  /  \___  /   |__| \_/  \___  >_____
        \/   /_____/      \/       \/                  \/\/\/\/
 
-    "
+    '
   end
 
   def clrscr

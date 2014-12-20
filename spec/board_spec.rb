@@ -39,6 +39,8 @@ describe Board do
   it 'should accept shots on the boundaries' do
     board.handle_shot("A1") 
     expect(board).not_to be_empty
+    # TODO : refractor tests for board 
+    # example - expect(board.status('A1')).to eq MISS
   end
 
 
@@ -82,10 +84,10 @@ describe Board do
     expect(board.any_floating_ships_left?).to eq false
   end
 
-  xit 'should mark all cells with KILL(4) if a ship sunk' do
+  # xit 'should mark all cells with KILL(4) if a ship sunk' do
     # allow(titanic).to receive(:coordinates).and_return([[0,0],[0,1],[0,2]])
     # board.add_ship(titanic)
     # expect
-  end
+  # end
 
 end

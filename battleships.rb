@@ -10,8 +10,8 @@ def create_default_ships
   [Ship.submarine, Ship.battleship, Ship.destroyer]
 end
 
-player1 = Player.new("Sanda",Board.new,create_default_ships)
-player2 = Player.new("Clint",Board.new,create_default_ships)
+player1 = Player.new("Player1",Board.new,create_default_ships)
+player2 = Player.new("Player2",Board.new,create_default_ships)
 
 game = Game.new(player1,player2)
 game.play
